@@ -1,0 +1,5 @@
+Checks: '-*,clang-analyzer-*,bugprone-*,performance-*'
+WarningsAsErrors: '*'
+HeaderFilterRegex: '.*[/\\]src[/\\].*'
+CheckOptions:
+  bugprone-exception-escape.FunctionsThatShouldNotThrow: ''

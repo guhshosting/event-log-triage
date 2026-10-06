@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "event-log-triage report 1.0",
+  "type": "object",
+  "required": ["schema_version", "application_version", "query", "summary", "event_groups", "events", "correlations", "warnings", "limitations"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "application_version": {"type": "string"},
+    "query": {"type": "object", "required": ["start", "end", "since_seconds", "maximum_level", "detail_limit", "maximum_events", "logs"]},
+    "summary": {"type": "object", "required": ["retained_events", "groups", "truncated", "exit_code"]},
+    "event_groups": {"type": "array", "items": {"type": "object", "required": ["provider", "channel", "event_id", "level", "count", "event_indices"]}},
+    "events": {"type": "array", "items": {"type": "object", "required": ["timestamp", "channel", "provider", "event_id", "version", "level", "task", "opcode", "keywords", "computer", "record_id", "process_id", "thread_id", "message_status", "message", "data"]}},
+    "correlations": {"type": "array", "items": {"type": "object", "required": ["kind", "window_seconds", "causality_established", "event_indices"], "properties": {"causality_established": {"const": false}}}},
+    "warnings": {"type": "array", "items": {"type": "string"}},
+    "limitations": {"type": "array", "items": {"type": "string"}}
+  }
+}
